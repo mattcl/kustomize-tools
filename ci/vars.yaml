@@ -1,0 +1,5 @@
+bin:
+  name: kustomize-tools
+  repo:
+    uri: https://github.com/mattcl/kustomize-tools.git
+  image-repo: mattcl/kustomize-tools
