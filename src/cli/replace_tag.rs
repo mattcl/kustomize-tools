@@ -28,6 +28,9 @@ pub struct KustomizationImage {
 
 /// Replaces the newTag for the specified image in the kustomization file.
 ///
+/// This will do nothing if the desired tag is already the tag specified in the
+/// kustomization file.
+///
 /// This will error if it's the case that another image has the same tag as the
 /// existing tag for the image we're trying to replace.
 #[derive(Debug, Clone, Args)]
@@ -66,6 +69,15 @@ impl ReplaceTag {
             .iter()
             .find(|img| img.name == self.image)
             .ok_or_else(|| anyhow!("Could not find the specified image in the file"))?;
+
+        // exit early if there would be no changes
+        if img.new_tag == self.tag {
+            println!(
+                "  The tag '{}' is already specified for '{}'",
+                &img.new_tag, &img.name
+            );
+            return Ok(());
+        }
 
         // sanity check to see if we have a duplicate
         let mut seen: HashSet<&str> = HashSet::default();
