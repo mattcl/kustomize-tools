@@ -91,7 +91,7 @@ impl ReplaceTag {
 
         println!(
             "  Replacing tag '{}' with '{}' for image '{}'",
-            &img.new_tag, &img.name, &self.tag
+            &img.new_tag, &self.tag, &img.name
         );
 
         // This really only works if the tag we want to replace is unique to the
