@@ -1,6 +1,6 @@
 [package]
 name = "kustomize-tools"
-version = "0.2.3"
+version = "0.2.4"
 edition = "2021"
 authors = ["Matt Chun-Lum <matt@questionable.engineering>"]
 rust-version = "1.70.0"
